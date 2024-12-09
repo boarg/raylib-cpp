@@ -167,7 +167,7 @@ public:
     /**
      * Get clipboard image content.
      */
-    static ::Image GetClipboard() { return Image(); }
+    static ::Image GetClipboard() { return {}; }
 
     ~Image() { Unload(); }
 
@@ -742,7 +742,7 @@ public:
      *
      * @return True or false depending on whether the Image has been loaded.
      */
-    bool IsValid() const { return ::IsImageReady(*this); }
+    bool IsValid() const { return IsImageReady(*this); }
 
     /**
      * Create an image from a selected channel of another image (GRAYSCALE)
@@ -751,8 +751,12 @@ public:
 
     /**
      * Apply custom square convolution kernel to image
-     */  KernelConvolution(const float* kernel, int kernelS     ::ImageKernelConvolution(this, kernel, kernelSize);
-    } d: void set(const ::Image& image) { data = image.data;     width = image.width;
+     */
+    void KernelConvolution(const float* kernel, int kernelSize) { ::ImageKernelConvolution(this, kernel, kernelSize); }
+protected:
+    void set(const ::Image& image) {
+        data = image.data;
+        width = image.width;
         height = image.height;
         mipmaps = image.mipmaps;
         format = image.format;

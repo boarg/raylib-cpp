@@ -90,7 +90,7 @@ public:
      * Set gamepad vibration for both motors (duration in seconds)
      */
     void SetVibration(float leftMotor, float rightMotor, float duration) {
-        ::SetGamepadVibration(number, leftMotor, rightMotor, duration);
+        ::SetGamepadVibration(number, leftMotor, rightMotor);
     }
 protected:
     void set(int gamepadNumber) { number = gamepadNumber; }
