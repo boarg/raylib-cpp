@@ -319,7 +319,7 @@ public:
      *
      * @return True or false depending on whether the Texture has data.
      */
-    bool IsValid() const { return IsTextureValid(*this); }
+    bool IsValid() const { return IsTextureReady(*this); }
 protected:
     void set(const ::Texture& texture) {
         id = texture.id;
